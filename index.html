@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tricking Score</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>TRICKING SCORE</h1>
+    <div class="input-wrapper">
+      <textarea id="trickInput" placeholder="bs12, hook, tdr, dubcork" oninput="autoResize(this); updateScore(); handleInput()" onkeydown="handleKey(event)"></textarea>
+      <div id="suggestions" class="autocomplete-box"></div>
+    </div>
+
+    <div class="total-box">
+      total: <span id="score">0.00</span>
+    </div>
+
+    <div class="dynamic-text" id="resultText"></div>
+  </div>
+
+  <div class="fire-background"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

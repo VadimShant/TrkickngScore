@@ -1,0 +1,80 @@
+arabian - 3.0  
+axe - 0.5  
+backflip - 3.5  
+bfly - 2.5  
+blanch - 5.0  
+blaster - 0.5  
+boxcutter - 8.5 / 7.5  
+btwhh - 6.0  
+bush - 6.5  
+cartwheel - 2.0  
+cheat - 0.5  
+cheat 9 - 4.0  
+c10 - 5.5  
+c9 - 4.75  
+compaso - 0.5  
+cork - 5.5  
+corkhyper - 6.5  
+corksnur - 7.0  
+corkswipe - 7.0  
+dubcork - 8.0  
+dubfull - 6.5  
+duboo - 1.5  
+flashkick - 4.5  
+front swing - 1.75  
+full - 4.0  
+gainer - 4.0  
+gms - 1.5  
+gms - 4.5  
+gyro - 2.0  
+hook - 2.0  
+hyper - 1.0  
+icy - 1.5  
+iron flip - 3.5 / 4.0  
+jump - 1.0  
+jstep - 0.5  
+maga - 1.0  
+miss leg - 1.5  
+ms - 0.5  
+naldhd - 0.5  
+pop - 0.5  
+pop 360 - 2.75  
+punch - 1.5  
+raize - 2.5 / 3.0  
+roach - 2.0  
+roll - 2.0  
+roundoff - 2.5  
+scoot - 0.5  
+sideswipe - 3.5  
+snapuswipe - 7.0  
+spider - 2.5  
+spin step - 0.5  
+split - 2.0  
+step - 0.5  
+strike - 1.5  
+swing - 1.5  
+tdr - 1.5  
+tdub - 5.0  
+tornado - 2.5  
+trip - 0.5  
+twist - 1.5 / 1.75  
+vanish - 0.5  
+webster - 4.0  
+xtrue - 1.75  
+
+
+aerial, arabian, atw, backflip, bkick, bfly, btwist, boxcutter, butterfly,
+ butterfly twist, cheat 720, cheat 900, cheat 1080, cheat gainer, cheat 9,
+  cheat 10, cork, corkscrew, cork hyper, cork round, cork snur, cork swingthrough,
+   cork double, cork triple, dub cork, trip cork, dub full, dub dub, double full,
+    double leg, full, full hyper, full snapu, full swipe, full doubleleg, gainer,
+     gainer flash, gainer switch, gainer full, gainer dub, gainer trip, gms, gyro, hook,
+      jackknife, raiz, raiz full, raiz dub, raiz trip, scoot, sideflip, sideswipe, snapu,
+       swing cork, swing full, swing 9, touchdown raiz, touchdown hook, touchdown gainer,
+        tornado, vanish gainer, webster, x-out, double webster, triple cork, wallflip, wallfull,
+         wallgainer, pop flash, pop full, pop 9, frontflip, flashkick, front swing cork, front swing full,
+          swing 10, full-in, full-out, shuriken cork, shuriken cutter, shuriken twist, rise, aerial twist, vanish cork,
+           vanish full, swing through cork, back handspring, cartwheel, cork swing 9, sideswipe cork, cheat 10 hyper, dub boxcutter,
+            cork jackknife, gainer cork, cork jacknife, full boxcutter, triple full, cork hyperhook, b-twist swing cork, raiz swing cork,
+             touchdown raiz swing cork,
+             swipe cork, cork swing through gainer, swing dub cork, dub dub cork, swing trip cork, dub swing full.

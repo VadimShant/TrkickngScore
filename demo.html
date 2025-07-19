@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tricking Score</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+    }
+
+
+    .input-wrapper {
+      position: relative;
+       width: 100%;  /* как у твоего textarea */
+       max-width: 400px;
+      }
+    .wrapper {
+      background-color: #7d0f0f;
+      padding: 30px;
+      border: 5px solid black;
+      width: 400px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .autocomplete-box {
+  position: center;
+  z-index: 1;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  max-height: 100px;
+  overflow-y: auto;
+  z-index: 10;
+  width: 100%;
+  display: none;
+  font-size: 16px;
+
+}
+
+     .autocomplete-item {
+       padding: 8px;
+      cursor: pointer;
+  }
+
+    .autocomplete-item:hover {
+    background-color: #f0f0f0;
+    }
+
+    h1 {
+      font-family: "Trade Winds", system-ui;
+      font-size: 40px;
+      color: #f1c40f;
+      margin-bottom: 30px;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    textarea {
+      height: 40px;
+      width: 100%;
+      min-height: 40px;
+      max-height: 600px;
+      resize: none;
+      overflow: hidden;
+      padding: 10px;
+      font-size: 18px;
+      font-family: monospace;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+    }
+
+    .total-box {
+      background: black;
+      padding: 20px;
+      margin-top: 10px;
+      font-size: 20px;
+    }
+
+    .total-box span {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .dynamic-text {
+      display: inline-block;
+      word-wrap: break-word;
+      white-space: normal;
+      width: 100%;
+      overflow-wrap: break-word;
+    }
+
+    .fire-background {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255, 80, 0, 0.6) 0%, transparent 70%);
+      opacity: 0;
+      filter: blur(10px);
+      z-index: 0;
+      animation: rise 2s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translate(-50%, -50%) translateY(0px);
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) translateY(-30px);
+        opacity: 0.3;
+      }
+    }
+
+    /* ДОБАВЬ в <style> */
+
+
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <h1>TRICKING SCORE</h1>
+    <div class="input-wrapper">
+      <textarea id="trickInput" placeholder="bs12, hook, tdr, dubcork" oninput="autoResize(this); updateScore(); handleInput()" onkeydown="handleKey(event)"></textarea>
+      <div id="suggestions" class="autocomplete-box"></div>
+    </div>
+
+    <div class="total-box">
+      total: <span id="score">0.00</span>
+    </div>
+
+    <div class="dynamic-text" id="resultText"></div>
+  
+</div>
+  <div class="fire-background"></div>
+
+  <script>
+    const sheetId = "1DPzHNeUjTGCLCFC1vB9wD4YaJnWLxlF4ayZtO0QH460";
+    const apiKey = "AIzaSyCdWNc0szsmhtpSzWpF7JZ3ZsddOq1Xvj4"; 
+    const range = "Db!A2:B300";
+
+    let trickPoints = {};
+    let trickNames = [];
+
+    async function loadTricks() {
+      const res = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`);
+      const data = await res.json();
+
+      if (!data.values) {
+        alert("Ошибка загрузки трюков из таблицы");
+        return;
+      }
+
+      data.values.forEach(([name, score]) => {
+        if (!name || !score) return;
+        const trick = name.trim().toLowerCase();
+        trickPoints[trick] = parseFloat(score);
+        trickNames.push(trick);
+      });
+    }
+
+    function updateScore() {
+      const input = document.getElementById("trickInput").value;
+      const tricks = input.split(",").map(t => t.trim().toLowerCase());
+      let total = 0;
+
+      tricks.forEach(trick => {
+        if (trickPoints[trick] != null) {
+          total += trickPoints[trick];
+        }
+      });
+
+      document.getElementById("score").textContent = total.toFixed(2);
+
+      const fire = document.querySelector(".fire-background");
+      if (total >= 20) {
+        let intensity = Math.min((total - 20) / 80, 1);
+        fire.style.opacity = intensity;
+        fire.style.transform = `translate(-50%, -50%) scale(${1 + intensity * 0.5})`;
+      } else {
+        fire.style.opacity = 0;
+      }
+    }
+
+    function autoResize(textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
+        function handleInput() {
+  const inputEl = document.getElementById("trickInput");
+  const value = inputEl.value;
+  const lastTerm = value.split(",").pop().trim().toLowerCase();
+  const box = document.getElementById("suggestions");
+
+  if (!lastTerm || lastTerm.length < 1) {
+    box.style.display = "none";
+    return;
+  }
+
+  const matches = trickNames.filter(name => name.startsWith(lastTerm)).slice(0, 10);
+  box.innerHTML = "";
+
+  if (matches.length === 0) {
+    box.style.display = "none";
+    return;
+  }
+
+  matches.forEach(match => {
+    const div = document.createElement("div");
+    div.className = "autocomplete-item";
+    div.textContent = match;
+    div.onclick = () => {
+      const parts = value.split(",");
+      parts[parts.length - 1] = ` ${match}`;
+      inputEl.value = parts.join(",").trim() + ", ";
+      box.style.display = "none";
+      updateScore();
+    };
+    box.appendChild(div);
+  });
+
+  const rect = inputEl.getBoundingClientRect();
+  box.style.top = rect.bottom + window.scrollY + "px";
+  box.style.left = rect.left + window.scrollX + "px";
+  box.style.width = rect.width + "px";
+  box.style.display = "block";
+
+  updateScore();
+}
+
+function handleKey(e) {
+  const box = document.getElementById("suggestions");
+  if (e.key === "Escape") box.style.display = "none";
+}
+
+      
+
+    document.addEventListener("DOMContentLoaded", loadTricks);
+  </script>
+
+</body>
+</html>
