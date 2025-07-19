@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: white;
+  font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.wrapper {
+  background-color: #7d0f0f;
+  padding: 30px;
+  border: 5px solid black;
+  width: 400px;
+  text-align: center;
+  z-index: 1;
+}
+
+.autocomplete-box {
+  position: center;
+  z-index: 10;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  max-height: 100px;
+  overflow-y: auto;
+  width: 100%;
+  display: none;
+  font-size: 16px;
+}
+
+.autocomplete-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.autocomplete-item:hover {
+  background-color: #f0f0f0;
+}
+
+h1 {
+  font-family: "Trade Winds", system-ui;
+  font-size: 40px;
+  color: #f1c40f;
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+textarea {
+  height: 40px;
+  width: 100%;
+  min-height: 40px;
+  max-height: 600px;
+  resize: none;
+  overflow: hidden;
+  padding: 10px;
+  font-size: 18px;
+  font-family: monospace;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+.total-box {
+  background: black;
+  padding: 20px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.total-box span {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.dynamic-text {
+  display: inline-block;
+  word-wrap: break-word;
+  white-space: normal;
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+.fire-background {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 80, 0, 0.6) 0%, transparent 70%);
+  opacity: 0;
+  filter: blur(10px);
+  z-index: 0;
+  animation: rise 2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes rise {
+  0% {
+    transform: translate(-50%, -50%) translateY(0px);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(-30px);
+    opacity: 0.3;
+  }
+}
