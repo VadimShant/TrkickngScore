@@ -37,7 +37,7 @@ function updateScore() {
   });
 
   baseTotal = total;
-  celebrate()
+  
   const execution = parseFloat(document.getElementById("myRange").value);
   const finalScore = (baseTotal * execution).toFixed(2);
 
@@ -57,6 +57,7 @@ function updateScore() {
 function autoResize(textarea) {
   textarea.style.height = "auto";
   textarea.style.height = textarea.scrollHeight + "px";
+
 }
 
 function handleInput() {
@@ -120,11 +121,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function celebrate() {
-  const fire = document.querySelector("video");
-if (baseTotal >= 60) {
-  fire.style.display = 'block';
-} else {
-  fire.style.display = 'none';
-}
-}
+
+
