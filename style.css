@@ -7,20 +7,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 70px;
 }
 
 .input-wrapper {
+  
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 100%;
 }
 
 .wrapper {
-  background-color: #7d0f0f;
-  padding: 30px;
+  
+  background-color: #4f0f7d;
+  
   border: 5px solid black;
-  width: 400px;
+  width: 30%;
+  height: 50%;
   text-align: center;
   z-index: 1;
 }
@@ -28,12 +31,12 @@ body {
 .autocomplete-box {
   position: center;
   z-index: 10;
-  background-color: white;
-  color: black;
+  background-color: rgb(138, 138, 138);
+  color: rgb(0, 0, 0);
   border: 1px solid #ccc;
   max-height: 100px;
   overflow-y: auto;
-  width: 100%;
+  width: 99%;
   display: none;
   font-size: 16px;
 }
@@ -44,7 +47,7 @@ body {
 }
 
 .autocomplete-item:hover {
-  background-color: #f0f0f0;
+  background-color: rgb(223, 223, 223);
 }
 
 h1 {
@@ -57,7 +60,6 @@ h1 {
 }
 
 textarea {
-  height: 40px;
   width: 100%;
   min-height: 40px;
   max-height: 600px;
@@ -69,17 +71,18 @@ textarea {
   box-sizing: border-box;
   border: none;
   outline: none;
+  color: rgb(0, 0, 0);
 }
 
 .total-box {
   background: black;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 20px;
 }
 
 .total-box span {
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
   color: white;
 }
@@ -94,29 +97,98 @@ textarea {
 
 .fire-background {
   position: absolute;
-  top: 100%;
+  top: 30%;
   left: 50%;
-  width: 300px;
-  height: 300px;
+  width: 1500px;
+  height: 1300px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255, 80, 0, 0.6) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(23, 14, 32, 0.6) 0%, transparent 100%);
   opacity: 0;
   filter: blur(10px);
   z-index: 0;
-  animation: rise 2s infinite ease-in-out;
+  animation: rise 20s infinite ease-in-out;
   pointer-events: none;
 }
 
 @keyframes rise {
   0% {
     transform: translate(-50%, -50%) translateY(0px);
-    opacity: 0.5;
+    opacity: 1;
   }
   50% {
-    opacity: 1;
+    opacity: 3;
   }
   100% {
     transform: translate(-50%, -50%) translateY(-30px);
-    opacity: 0.3;
+    opacity: 2;
   }
 }
+
+/* Execution Knob Styles */
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 85%; /* Full-width */
+  height: 5px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  border-radius: 10px;
+}
+
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 15px; /* Set a specific slider handle width */
+  height: 30px; /* Slider handle height */
+  background: #000000; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 10px; /* Set a specific slider handle width */
+  height: 10px; /* Slider handle height */
+  background: #b4b4b4; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.label-row{
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label[for="executionKnob"] {
+  
+  font-family: "Trade Winds", system-ui;
+  font-size: 20px;
+  color: #ffffff;
+  font-style: normal;
+  text-align: center;
+}
+
+input[id="demo"] {
+  font-family: "Trade Winds", system-ui;
+  font-size: 10px;
+  color: #f1c40f;
+  margin-top: 10px;
+  text-align: center;
+  display: inline;
+  width: 100%;
+}
+

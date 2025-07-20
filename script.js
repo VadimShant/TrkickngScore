@@ -1,9 +1,12 @@
+
     const sheetId = "1DPzHNeUjTGCLCFC1vB9wD4YaJnWLxlF4ayZtO0QH460";
     const apiKey = "AIzaSyCdWNc0szsmhtpSzWpF7JZ3ZsddOq1Xvj4"; 
     const range = "Db!A1:B300";
 
+
 let trickPoints = {};
 let trickNames = [];
+let baseTotal = 0;
 
 async function loadTricks() {
   const res = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`);
@@ -33,7 +36,12 @@ function updateScore() {
     }
   });
 
-  document.getElementById("score").textContent = total.toFixed(2);
+  baseTotal = total;
+  const execution = parseFloat(document.getElementById("myRange").value);
+  const finalScore = (baseTotal * execution).toFixed(2);
+
+  document.getElementById("score").textContent = `${finalScore}`;
+  document.getElementById("demo").textContent = execution.toFixed(2); // отобразить значение слайдера
 
   const fire = document.querySelector(".fire-background");
   if (total >= 20) {
@@ -97,4 +105,17 @@ function handleKey(e) {
   if (e.key === "Escape") box.style.display = "none";
 }
 
-document.addEventListener("DOMContentLoaded", loadTricks);
+window.addEventListener("DOMContentLoaded", () => {
+  loadTricks();
+  document.querySelectorAll("textarea").forEach(autoResize);
+  updateScore(); // при загрузке сразу посчитать
+});
+
+// Настройка слайдера
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.getElementById("myRange");
+  slider.addEventListener("input", () => {
+    updateScore(); // пересчёт при изменении слайдера
+  });
+});
+
