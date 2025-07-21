@@ -19,7 +19,7 @@
     <h1>TRICKING SCORE</h1>
     <!--          START INPUT WRAPPER               -->
    <div class="input-wrapper">
-      <textarea id="trickInput" placeholder="bs12, hook, tdr, dubcork" oninput="autoResize(this); updateScore(); handleInput()" onkeydown="handleKey(event)"></textarea>
+      <textarea id="trickInput" placeholder="bs12, hook, tdr, st, dubcork" oninput="autoResize(this); updateScore(); handleInput()" onkeydown="handleKey(event)"></textarea>
       <div id="suggestions" class="autocomplete-box"></div>
     </div>
       
@@ -36,8 +36,10 @@
 
       </div>
       
+
     <div class="total-box">
-      total: <span id="score">0.00 * <span id="demo">1.00</span></span>
+      <div class="fire" id="fire"></div>
+      total: <span id="score">0.00 * <span id="demo">1.00</div></span></span>
     </div>
 
     <div class="dynamic-text" id="resultText"></div>
