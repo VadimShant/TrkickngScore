@@ -38,11 +38,14 @@ function updateScore() {
 
   baseTotal = total;
   
+  
   const execution = parseFloat(document.getElementById("myRange").value);
   const finalScore = (baseTotal * execution).toFixed(2);
 
   document.getElementById("score").textContent = `${finalScore}`;
   document.getElementById("demo").textContent = execution.toFixed(2); // отобразить значение слайдера
+
+  congratulate(finalScore)
 
   const fire = document.querySelector(".fire-background");
   if (total >= 20) {
@@ -122,4 +125,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
+function congratulate(score) {
+  const fire = document.getElementById("fire");
+  if (score < 50) {
+    fire.style.opacity = 0; // скрыть огонь при низком счёте
+    return;
+  } else if (score >= 50 && score < 100) {
+    fire.style.opacity = 0.3; // слабый огонь при среднем счёте
+   // показать огонь при высоком счёте  
+  } else if (score >= 100 && score < 200) {
+    fire.style.opacity = 0.9; // средний огонь при высоком сч
+  }
+    let maxOpacity = 0.8;
+  let opacity = Math.min(score / 300, 1) * maxOpacity;
+  fire.style.opacity = opacity;
+}

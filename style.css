@@ -25,6 +25,7 @@ body {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+
 }
 
 .wrapper {
@@ -32,25 +33,24 @@ body {
   margin: 0;
   border: 5px solid black;
   width: 600px;
-  max-height: none;
+  max-height: auto;
   min-height: 355px;
   text-align: center;
   z-index: 1;
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   box-sizing: border-box;
-  overflow: visible;
+  overflow: auto;
+ 
 }
 
 
 .autocomplete-box {
   position: center;
   z-index: 10;
-  background-color: rgb(138, 138, 138);
+  background-color: rgb(176, 176, 176);
   color: rgb(0, 0, 0);
   border: 1px solid #ccc;
   max-height: 100px;
@@ -85,10 +85,10 @@ textarea {
   resize: none;
   overflow: hidden;
   padding: 10px;
-  font-size: 18px;
+  font-size: 20px;
   font-family: monospace;
   box-sizing: border-box;
-  border: none;
+  border: 1px solid #ccc;
   outline: none;
   color: rgb(0, 0, 0);
 }
@@ -98,10 +98,11 @@ textarea {
   padding: 20px;
   margin-top: 20px;
   font-size: 20px;
+  top: 1px
 }
 
 .total-box span {
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
   color: white;
   margin: 0px;
@@ -120,6 +121,7 @@ textarea {
 /* Execution Knob Styles */
 .slidecontainer {
   width: 100%; /* Width of the outside container */
+ 
 }
 
 /* The slider itself */
@@ -166,7 +168,6 @@ textarea {
   margin-top: 20px;
   height: 50px;
   width: 100%;
-  
 }
 
 label[for="executionKnob"] {    
@@ -193,5 +194,24 @@ input[id="demo"] {
   position: relative;
   width: 100%;
   height: 100%;
+  padding-bottom: 10px; /* Padding around the slider */
+  padding-top: 5px;
   
 }
+
+.fire {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  height: 56%;
+  background-image: url("fire2.gif"); /* замени на свою анимацию */
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0; /* начальная прозрачность */
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+  background-color: rgba(2, 1, 1, 0.5); /* полупрозрачный красный цвет */
+} 
