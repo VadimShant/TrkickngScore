@@ -1,6 +1,6 @@
   const sheetId = "1DPzHNeUjTGCLCFC1vB9wD4YaJnWLxlF4ayZtO0QH460";
     const apiKey = "AIzaSyCdWNc0szsmhtpSzWpF7JZ3ZsddOq1Xvj4"; 
-    const range = "Db!A1:B300";
+    const range = "DB!A2:B300"
 
 
 let trickPoints = {};
@@ -138,4 +138,17 @@ function congratulate(score) {
     let maxOpacity = 0.8;
   let opacity = Math.min(score / 300, 1) * maxOpacity;
   fire.style.opacity = opacity;
+}
+function showSupport() {
+  const el = document.querySelector('.support-card');
+  if (!el) {
+    console.error("Support card not found");
+    return;
+  }
+  // если скрыто или явно не задано — показываем, иначе скрываем
+  if (el.style.display === "none" || getComputedStyle(el).display === "none") {
+    el.style.display = "block";
+  } else {
+    el.style.display = "none";
+  }
 }
