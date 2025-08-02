@@ -298,15 +298,10 @@ input[id="demo"] {
   }
 
   .supportBtn {
-    text-align: center;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: rgb(0, 0, 0);
-    font-size: 15px; 
-    border-radius: 7px;
-    background-image: linear-gradient(to right, #8a91a2 0%, #c9d6ee 51%, #7e7e7e 100%);
-    padding: 5px 80px;
-    
+   font-size:25px; ;
+    background-color:#49496a;
+    color: #f0f0f8;
+    display: inline-block
 }
 
 .supportBtn:hover {
@@ -315,10 +310,29 @@ input[id="demo"] {
 
 .annotation-card {
     
-    width: 100%;
+    width: 420px;
+    max-height: fit-content;
+    min-width: 1000px;
+    max-width: 1600px;
     position: static;
     background-color: rgba(66, 66, 66, 0.5);
     padding: 20px;
     color: white;
     font-size: 20px;
+}
+
+.SendTBtn {
+    font-size:25px; ;
+    background-color:#49496a;
+    color: #f0f0f8;
+    display: inline-block 
+}
+
+.SendTrick{
+  font-size: 25px;
+
+  font-style: #f0f0f8;
+  color: rgb(255, 255, 255);
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+
 }
