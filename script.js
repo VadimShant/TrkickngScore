@@ -112,7 +112,7 @@ function applyModifiers(tricks) {
       const segmentBaseSum = segment.reduce((sum, t) => sum + t.baseScore, 0);
 
       // множитель
-      const multiplier = starter.source === "basic" ? 1.5 : 1.75;
+      const multiplier = starter.source === "basic" ? 1.25 : 1.50;
       const segmentTotal = segmentBaseSum * multiplier;
       const bonusTotal = segmentTotal - segmentBaseSum;
 
