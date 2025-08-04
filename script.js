@@ -74,23 +74,37 @@ function buildTrickArray(inputStr) {
 }
 
 
-// === правила модификации ===
 function applyModifiers(tricks) {
   const len = tricks.length;
 
-  // 1. trickPosition: hard во второй половине
+  // Промежуточный лог: входные данные
+  console.groupCollapsed("Modifiers input");
+  console.log(tricks.map(t => ({
+    name: t.name,
+    source: t.source,
+    baseScore: t.baseScore,
+    position: t.position
+  })));
+  console.groupEnd();
+
+  // 1. hard во второй половине
   tricks.forEach(t => {
     if (t.source === "hard" && t.position > len / 2) {
-      t.modifiedScore = (t.modifiedScore ?? t.baseScore) * 1.25;
+      t.modifiedScore = (t.modifiedScore ?? t.baseScore) * 1.35;
+      t._log = t._log || [];
+      t._log.push(`hard second half ×1.35 => ${t.modifiedScore.toFixed(2)}`);
     }
   });
 
-  // 2. transitionAfterHard: hard -> variation
+  // 2. hard -> variation
   for (let i = 0; i < tricks.length - 1; i++) {
     const cur = tricks[i];
     const next = tricks[i + 1];
     if (cur.source === "hard" && next && next.source === "variation") {
-      cur.modifiedScore = (cur.modifiedScore ?? cur.baseScore) * 1.25;
+      const before = (cur.modifiedScore != null ? cur.modifiedScore : cur.baseScore);
+      cur.modifiedScore = before * 1.45;
+      cur._log = cur._log || [];
+      cur._log.push(`hard→variation transition ×1.45 (was ${before.toFixed(2)}) => ${cur.modifiedScore.toFixed(2)}`);
     }
   }
 
@@ -99,7 +113,6 @@ function applyModifiers(tricks) {
     const starter = tricks[i];
     if (starter.source !== "basic" && starter.source !== "hard") continue;
 
-    // соберём подряд идущие variation после starter
     let j = i + 1;
     const segment = [starter];
     while (j < tricks.length && tricks[j].source === "variation") {
@@ -107,33 +120,88 @@ function applyModifiers(tricks) {
       j++;
     }
 
-    if (segment.length >= 3) { // starter + минимум 2 variation подряд => length >=3
-      // сумма базовых очков сегмента
+    if (segment.length >= 3) { // starter + минимум 2 variation
       const segmentBaseSum = segment.reduce((sum, t) => sum + t.baseScore, 0);
-
-      // множитель
       const multiplier = starter.source === "basic" ? 1.25 : 1.50;
       const segmentTotal = segmentBaseSum * multiplier;
       const bonusTotal = segmentTotal - segmentBaseSum;
 
       if (segmentBaseSum > 0) {
-        // распределяем бонус пропорционально по каждому элементу сегмента
         segment.forEach(t => {
           const share = (t.baseScore / segmentBaseSum) * bonusTotal;
-          const added = share;
-          const newScore = (t.modifiedScore ?? t.baseScore) + added;
+          const baseUsed = (t.modifiedScore != null ? t.modifiedScore : t.baseScore);
+          const newScore = baseUsed + share;
           t.modifiedScore = newScore;
+          t._log = t._log || [];
+          t._log.push(
+            `variation chain (${starter.name}+variations) share +${share.toFixed(2)}, now ${t.modifiedScore.toFixed(2)}`
+          );
         });
       }
-      // не смещаем i — возможны пересекающиеся применения других правил
     }
   }
 
+// 4. repeat penalty для подряд идущих одинаковых basic или variation трюков (2-й и далее): каждый следующий = предыдущий * 0.8
+for (let i = 0; i < tricks.length; i++) {
+  const cur = tricks[i];
+  if (!(cur.source === "basic" || cur.source === "variation")) continue;
+
+  const prev = tricks[i - 1];
+  if (prev && prev.name === cur.name && (prev.source === cur.source)) {
+    const prevEffective = prev.modifiedScore != null ? prev.modifiedScore : prev.baseScore;
+    const penaltyFactor = 0.8; // или 0.7 если хочешь сильнее
+    cur.modifiedScore = prevEffective * penaltyFactor;
+    cur._log = cur._log || [];
+    cur._log.push(
+      `repeat ${cur.source} devalue: previous ${prevEffective.toFixed(2)} → current ${cur.modifiedScore.toFixed(2)} (×${penaltyFactor})`
+    );
+  }
+}
+
+// 4.5. devalue перехода между повторяющимися basic/variation: pattern A -> X -> A
+// repeat penalty: basic или variation подряд — 2-й и далее берут предыдущий * 0.8 (накопительно)
+for (let i = 1; i < tricks.length; i++) {
+  const cur = tricks[i];
+  const prev = tricks[i - 2];
+  if (!prev) continue;
+
+  // только same source (basic или variation) и одинаковое имя подряд
+  if (
+    (cur.source === "basic" || cur.source === "variation") &&
+    cur.name === prev.name &&
+    cur.source === prev.source
+  ) {
+    const prevEffective = prev.modifiedScore != null ? prev.modifiedScore : prev.baseScore;
+    const penaltyFactor = 0.6;
+    cur.modifiedScore = prevEffective * penaltyFactor;
+    cur._log = cur._log || [];
+    cur._log.push(
+      `repeat ${cur.source} devalue cumulative: previous ${prevEffective.toFixed(2)} → current ${cur.modifiedScore.toFixed(2)} (×${penaltyFactor})`
+    );
+  }
+}
+
+
   // Финал: если не было модификации, ставим baseScore
   tricks.forEach(t => {
-    if (t.modifiedScore == null) t.modifiedScore = t.baseScore;
+    if (t.modifiedScore == null) {
+      t.modifiedScore = t.baseScore;
+      t._log = t._log || [];
+      t._log.push(`no modifier, use base ${t.baseScore.toFixed(2)}`);
+    }
   });
+
+  // Разбор по каждому трюку
+  console.groupCollapsed("Modifiers breakdown");
+  tricks.forEach(t => {
+    console.log(
+      `${t.name} modified=${t.modifiedScore.toFixed(2)}`,
+      t._log || []
+    );
+  });
+  console.groupEnd();
 }
+
 
 
 // === основная логика обновления счёта ===
