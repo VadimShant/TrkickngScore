@@ -89,12 +89,14 @@ function applyModifiers(tricks) {
 
   // 1. hard во второй половине
   tricks.forEach(t => {
+    if (len > 4){
     if (t.source === "hard" && t.position > len / 2) {
       t.modifiedScore = (t.modifiedScore ?? t.baseScore) * 1.35;
       t._log = t._log || [];
       t._log.push(`hard second half ×1.35 => ${t.modifiedScore.toFixed(2)}`);
     }
-  });
+  }
+});
 
   // 2. hard -> variation
   for (let i = 0; i < tricks.length - 1; i++) {
@@ -102,7 +104,7 @@ function applyModifiers(tricks) {
     const next = tricks[i + 1];
     if (cur.source === "hard" && next && next.source === "variation") {
       const before = (cur.modifiedScore != null ? cur.modifiedScore : cur.baseScore);
-      cur.modifiedScore = before * 1.45;
+      cur.modifiedScore = before * 1.35;
       cur._log = cur._log || [];
       cur._log.push(`hard→variation transition ×1.45 (was ${before.toFixed(2)}) => ${cur.modifiedScore.toFixed(2)}`);
     }
@@ -198,6 +200,7 @@ for (let i = 1; i < tricks.length; i++) {
       `${t.name} modified=${t.modifiedScore.toFixed(2)}`,
       t._log || []
     );
+    
   });
   console.groupEnd();
 }
@@ -235,7 +238,8 @@ function updateScore() {
 
   // Лог в консоль
 
-  console.log("Example:", example);
+  
+  document.getElementById("Console").innerHTML = ("Example:", example);
   console.groupEnd();
 
   // Вывод в UI
@@ -360,3 +364,59 @@ function showSupport() {
     el.style.display = "none";
   }
 }
+
+// console position on phone
+function checkFlexDirection() {
+    if (window.innerWidth < 1000) {
+      calculateconsole.style.flexDirection = 'column';
+    } else {
+      calculateconsole.style.flexDirection = 'row';
+    }
+  }
+
+
+ 
+  const supportCard = document.querySelector('.support-card');
+  const supportBtn = document.querySelector('.support-btn');
+  const backBtn = document.querySelector('.back-btn');
+
+  supportBtn.addEventListener('click', () => {
+    supportCard.classList.add('flipped');
+  });
+
+  backBtn.addEventListener('click', () => {
+    supportCard.classList.remove('flipped');
+  });
+
+
+  document.querySelector('.add-trick').addEventListener('click', () => {
+    const email = "lophineorganic@gmail.com"; // куда отправлять
+    const subject = encodeURIComponent("+ Add trick request");
+    const body = encodeURIComponent(
+`Please fill in the following fields and send back:
+
+Trick name: ___________________
+Transition: ___________________
+Variation(s): _________________
+Execution quality (0-10): ______
+`
+    );
+
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+});
+
+document.querySelector('.appeal').addEventListener('click', () => {
+    const email = "lophineorganic@gmail.com"; // куда отправлять
+    const subject = encodeURIComponent("Appeal: name, score");
+    const body = encodeURIComponent(
+`Please provide the details for your appeal:
+
+Your Name: ___________________
+Trick Name: __________________
+Score you appeal: ____________
+Reason: ______________________
+`
+    );
+
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+});

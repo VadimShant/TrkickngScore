@@ -152,3 +152,54 @@ function showSupport() {
     el.style.display = "none";
   }
 }
+
+
+
+
+
+
+
+
+    <!-- Support Block -->
+<div class="support-card">
+  <h2>Your support</h2>
+  <p></p>
+
+  <!-- PayPal Donate -->
+  <div class="support-item">
+    <div class="label">PayPal</div>
+    <form action="https://www.paypal.com/donate/?hosted_button_id=YVU83Y9Y7A792" method="post" target="_blank" class="inline-form">
+      <!-- Заменить hosted_button_id на свой, сгенерированный в PayPal -->
+      <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID"/>
+      <button type="submit" class="btn">
+        <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" alt="Donate with PayPal">
+        
+      </button>
+    </form>
+  </div>
+
+  <!-- USDT Wallet -->
+  <div class="support-item">
+    <div class="label">USDT</div>
+    <div class="wallet-box">
+      <div>Chain: TRC20 </div>
+      <div class="address">TK7Wxtjoc6r9ea6cqa7AVMiCiu35T8V4ze</div>
+      <!-- Можно подставить QR, если сгенерируешь изображение и положишь рядом -->
+      <!-- Пример: <img src="path/to/your-usdt-qr.png" alt="USDT QR" class="qr"> -->
+    </div>
+  </div>
+
+  <!-- Контакты -->
+  <div class="support-item">
+    <div class="label">contacts</div>
+    <div class="contacts">
+      <a href="https://www.instagram.com/twisttwix/" target="_blank">IG: @twisttwix</a><br>
+      <a href="mailto:lophineorganic@gmail.com">Email: lophineorganic</a>
+    </div>
+  </div>
+</div>
+  <section class="about-chaos">
+  <h2 class="about-title">About Tricking Score (Demo)</h2>
+  <p class="about-subtitle">
+    Welcome to <span>Tricking Score</span> — a project that makes tricking more fun and engaging for everyone.
+  </p>

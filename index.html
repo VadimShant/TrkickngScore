@@ -16,17 +16,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--          START CARD             -->
+  <div id="zeroposition" ></div>
+  <header id='home' class="space">
+    <span class="SmartCalcul">Combination calculator</span>
+    <nav>
+      <ul>
+        <li><a href="#zeroposition">Home</a></li>
+        <li><a href="#cons">Console</a></li>
+        <li><a href="#Aboutt">Info</a></li>
+        <li><a href="#Disp">Disput</a></li>
+        <li><a href="#End">Support</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<!--          START CARD             -->
 <div class="fire-background"></div>
-  <div class="wrapper">
+  <div id ='maincard' class="wrapper">
     <h1>TRICKING SCORE</h1>
-    <!--          START INPUT WRAPPER               -->
+  <!--          START INPUT WRAPPER               -->
    <div class="input-wrapper">
       <textarea id="trickInput" placeholder="bs12, hook, tdr, st, dubcork" oninput="autoResize(this); updateScore(); handleInput()" onkeydown="handleKey(event)"></textarea>
       <div id="suggestions" class="autocomplete-box"></div>
     </div>
       
-    <!-- 🔧 КРУТИЛКА (Execution Quality) -->
+<!-- 🔧 КРУТИЛКА (Execution Quality) -->
     <div class="knob-container">
       <label for="executionKnob" class="label-row">
         <span>Execution: </span>
@@ -50,62 +64,134 @@
 
   
 
-  <!-- Annotation Block -->
-<section class="annotation-card">
-  <h2>About Tricking Score (Demo)</h2> 
-  <p class="lead">
-    Welcome to <strong>Tricking Score</strong> — a project that makes tricking more fun and engaging for everyone.
-  </p>
+<div id="cons" class='LogServiceTab'>
+        <div class = calculateconsole></divcalculateconsole>
+        <div class="panel main-panel">
+            <h2>Calculation Example</h2>
+           
+            <pre preplaceholder="Backflip = (Jump (2.5) + Roll (2.0)) 
+           * AddDifficulty (1.25) = 6.075">
+<output id="Console" ></output>
 
-  <div class="section">
-    <h3>Here you can:</h3>
-    <ul>
-      <li><strong>Analyze</strong> your combos and progress</li>
-      <li><strong>Compete</strong> with others</li>
-      <li><strong>Collect</strong> variations and achievements</li>
-      <li><strong>Progress</strong> step by step</li>
-      <li><strong>Win merch</strong> and rewards</li>
-      <li><strong>Have fun</strong> with your friends</li>
-    </ul>
+            </pre>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<section id="Aboutt" class="about-section">
+  <h2 class="about-section__title">About Tricking Score 1.1</h2>
+
+  <ul class="about-cards">
+    <li class="about-card">
+      <h3 class="about-card__h">Analyze your combos and progress</h3>
+      <p class="about-card__meta">Track difficulty, style, and execution to see your growth over time.</p>
+    </li>
+
+    <li class="about-card">
+      <h3 class="about-card__h">Compete with others</h3>
+      <p class="about-card__meta">Challenge friends or join global leaderboards for extra motivation.</p>
+    </li>
+
+    <li class="about-card">
+      <h3 class="about-card__h">Collect variations and achievements</h3>
+      <p class="about-card__meta">Unlock trick badges and rare move variations as you improve.</p>
+    </li>
+
+    <li class="about-card">
+      <h3 class="about-card__h">Progress step by step</h3>
+      <p class="about-card__meta">Follow a clear path from basics to elite-level tricking.</p>
+    </li>
+
+    <li class="about-card">
+      <h3 class="about-card__h">Win merch and rewards</h3>
+      <p class="about-card__meta">Exclusive prizes for top performers and active community members.</p>
+    </li>
+
+    <li class="about-card">
+      <h3 class="about-card__h">Have fun with your friends</h3>
+      <p class="about-card__meta">Turn training into a game and share your progress.</p>
+    </li>
+  </ul>
+</section>
+
+
+<section class="about-how">
+  <h2 class="about-how__title">How it works</h2>
+
+  <ul class="how-cards">
+    <li class="how-card">
+      <h3 class="how-card__h">Find your <strong>trick, transition or variation</strong></h3>
+      <p class="how-card__meta">(hook, tdr, st, cork, ironman, snapu, double, split)</p>
+    </li>
+
+    <li class="how-card">
+      <h3 class="how-card__h">After each trick, indicate the <strong>transition</strong> to the next element.</h3>
+      <p class="how-card__meta">(punch, pop, swingThrough, frontSwing, vanish, wt, carryThrough, etc.)</p>
+    </li>
+
+    <li class="how-card">
+      <h3 class="how-card__h">List trick variations separated by commas.</h3>
+      <p class="how-card__meta">(.., cart, punch, fulltwist, shuriken, twist, feilong, knife, ...)</p>
+    </li>
+
+    <li class="how-card">
+      <h3 class="how-card__h">Be honest when adding the <strong>execution quality coefficient</strong>.</h3>
+      <p class="how-card__meta">The highest score is a performance that cannot be faulted.</p>
+    </li>
+
+    <li class="how-card">
+            <h3  class="how-card__h">Rules Overview</h3>
+                <p class="how-card__meta">Jump ≈ 2.75 kJ effort, because..</p>
+                    <div class="formula">
+                        E = m × g × h <br>
+                        m = 70 kg, g = 9.81 m/s², h = 1 m <br>
+                        E = 686.7 J = 0.69 kJ <br>
+                        Muscle efficiency: 25% <br>
+                        Real energy ≈ 2.75 kJ <br>
+                      </div>
+                <p class="how-card__meta">Basic moves: Jump, Roll, Handstand, Split, Swing...</p><br>
+                <p class="how-card__meta">Tricks are built from moves, combos from tricks</p>
+                </li>
+    
+     <li class="how-card">
+            <h3  class="how-card__h">Combinations Rules</h3>
+            <p class="how-card__meta">Position bonus: if trick is after the halfway point → ×1.35</p><br>
+            <p class="how-card__meta">Variation bonus: if after heavy trick → ×1.25</p><br>
+            <p class="how-card__meta">Consecutive variations (>1) → ×1.25</p><br>
+            <p class="how-card__meta">Repeat penalty:  same basic move/transition in a row → -40% each time</p>
+     </li>
+                      
+  </ul>
+</section>
+
+<section id="Disp" class="disput-section">
+  <h2 class="disput-title">Disput</h2>
+
+  <div class="disput-buttons">
+    <button class="disput-btn add-trick">+ Add trick</button>
+    <button class="disput-btn appeal">Appeal: name, score</button>
+    
   </div>
+  
+</section>
 
-  <div class="section">
-    <h3>How it works</h3>
-    <ul>
-      <li>Find your <strong>trick, transition or variation</strong> <br> 
-        (hook, tdr, st, cork, ironman, snapu, double, split) </li>
-      <br>
-      <li>After each trick, indicate the <strong>transition</strong> to the next element. <br>
-         (punch, pop, swingThrough, frontSwing, vanish, wt, carryThrough, etc.)</li>
-      <br>
-      <li>List trick variations separated by commas. <br>
-         (.., cart, punch, fulltwist, shuriken, twist, feilong, knife, ...)</li>
-      <br>
-      <li>Be honest when adding the <strong>execution quality coefficient. <br></strong> 
-        The highest score is a performance that cannot be faulted.</li>
-    </ul>
-  </div>
-  <h4>Note:</h4>
-  <p class="note">
-    This is only a <strong>demo version</strong>. The full version with an extended database and features is coming soon!<br />
-    Thank you very much for your interest, you can also  <button class="supportBtn" onclick="showSupport()">support the project or provide feedback.</button> <br>
-    <br>
-    If you have found a Trick that is not yet in the database. <br> <a class="SendTrick" href="mailto:lophineorganic@gmail.com">
-    
-      You can send your Trick directly to us for review.</a> Thank you for your cooperation. 🙏
-</p>
-    
+<section class="support-section">
+  <h3 class="support-title">Support & Contact</h3>
 
-    
-    <!-- Support Block -->
-<div class="support-card">
-  <h2>Your support</h2>
-  <p></p>
-
-  <!-- PayPal Donate -->
-  <div class="support-item">
-    <div class="label">PayPal</div>
-    <form action="https://www.paypal.com/donate/?hosted_button_id=YVU83Y9Y7A792" method="post" target="_blank" class="inline-form">
+   <div id="End" class="support-card">
+    <div class="card-inner">
+      <!-- Front -->
+      <div class="card-front">
+        <button class="support-btn">Support the project</button>
+      </div>
+      <!-- Back -->
+      <div class="card-back">
+        <div class="donate-info">
+          <p><strong>USDT: Chain: TRC20</strong>
+      <div class="address">TK7Wxtjoc6r9ea6cqa7AVMiCiu35T8V4ze</div></p>
+          <p><strong>PayPal:</strong> <form action="https://www.paypal.com/donate/?hosted_button_id=YVU83Y9Y7A792" method="post" target="_blank" class="inline-form">
       <!-- Заменить hosted_button_id на свой, сгенерированный в PayPal -->
       <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID"/>
       <button type="submit" class="btn">
@@ -113,35 +199,24 @@
         
       </button>
     </form>
-  </div>
-
-  <!-- USDT Wallet -->
-  <div class="support-item">
-    <div class="label">USDT</div>
-    <div class="wallet-box">
-      <div>Chain: TRC20 </div>
-      <div class="address">TK7Wxtjoc6r9ea6cqa7AVMiCiu35T8V4ze</div>
-      <!-- Можно подставить QR, если сгенерируешь изображение и положишь рядом -->
-      <!-- Пример: <img src="path/to/your-usdt-qr.png" alt="USDT QR" class="qr"> -->
+  </p>
+          <button class="back-btn">-</button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Контакты -->
-  <div class="support-item">
-    <div class="label">contacts</div>
-    <div class="contacts">
-      <a href="https://www.instagram.com/twisttwix/" target="_blank">IG: @twisttwix</a><br>
-      <a href="mailto:lophineorganic@gmail.com">Email: lophineorganic</a>
-    </div>
+  <div class="contact-buttons">
+    <a href="https://www.instagram.com/trickingscore/" class="contact-btn">Instagram</a>
+    <a href="mailto:lophineorganic@gmail.com" class="contact-btn">Email</a>
   </div>
+</section>
 
-  <p class="thanks">Thank you for your feedback!</p>
+
+      </div>
+</section>
+
 </div>
-
-<!-- Стили -->
-
- 
-
   <script src="script.js"></script>
 </body>
 </html>
