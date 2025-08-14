@@ -203,3 +203,210 @@ function showSupport() {
   <p class="about-subtitle">
     Welcome to <span>Tricking Score</span> — a project that makes tricking more fun and engaging for everyone.
   </p>
+
+
+
+
+@media (min-width: 100px) and (max-width: 1000px) {
+  
+.calculateconsole {
+  width: 100%;
+  height: 150px;
+}
+
+h2 {
+  font-size: 10px;
+}
+
+pre {
+    width: 99%;
+    height: 90%;
+    
+    padding: 5px;
+    font-size: 10px;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, #00fbff6c, transparent);
+    margin-top: 0px;
+}
+
+.panel {
+    padding: 10px;
+      box-shadow: 0 0 1px rgba(0, 200, 255, 0.5);
+}
+
+.wrapper {
+  width: 100%;
+  min-height: auto;
+  height: fit-content;
+}
+
+.about-section {
+  padding: 5% 2%;
+}
+
+.about-how {
+    padding: 5% 1%;
+}
+
+.slider {
+
+    height: 2px;
+}
+
+.SmartCalcul {
+
+    font-size: 15px;
+}
+
+.space {
+    padding: 10px 5px;
+    background: #000000;
+}
+h1 {
+
+    font-size: 40px;
+}
+
+textarea {
+    height: fit-content;
+    font-size: 15px;
+}
+
+label[for="executionKnob"] {
+    font-size: 10px;
+}
+
+.total-box span
+ {
+    font-size: 30px;
+  }
+
+  .total-box {
+    font-size: 15px;
+  }
+
+.autocomplete-box {
+
+    font-size: 15px;
+}
+
+.fire {
+    height: 75px;
+}
+
+body {
+    padding-top: 50px;
+}
+
+
+.LogServiceTab {
+    min-height: 300px;
+        margin-top: 0px;
+}
+
+.about-section__title {
+
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.about-section__title::after {
+
+    width: 55px;
+    height: 1px;
+    margin-top: 0px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--edge), var(--edge2));
+    box-shadow: 0 0 18px rgba(112, 215, 255, .6);
+}
+
+.about-card__h {
+    font-size: 13px;
+}
+
+.about-card__meta {
+
+    font-size: 10px;
+}
+
+.about-how {
+
+    margin-top: 0px;
+}
+
+.about-how__title {
+
+    font-size: 20px;
+    padding: 0px 3px;
+
+}
+
+.about-how__title::after {
+
+    width: 33px;
+    height: 1px;
+    margin-top: 0px;
+    border-radius: 3px;
+}
+
+.how-card__h
+ {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+ul li {
+     margin-bottom: 0px; 
+}
+
+.how-card__meta
+ {
+
+    font-size: 10px;
+
+}
+
+.card-inner {
+
+    height: 200px;
+}
+
+.donate-info {
+    font-size: 10px;
+
+}
+
+a {
+
+    font-size: 10px;
+}
+
+.disput-title {
+
+    font-size: 25px;
+}
+
+.disput-title::after {
+    height: 2px;
+    margin: 0px auto 0;
+    border-radius: 1px;
+}
+
+.disput-buttons {
+
+    gap: 40px;
+
+}
+
+.disput-section {
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+
+}
