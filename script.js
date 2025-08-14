@@ -420,3 +420,12 @@ Reason: ______________________
 
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 });
+
+
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+

@@ -14,6 +14,8 @@ body {
   align-items: center;
   position: relative;
   box-sizing: border-box;
+  overflow-x: hidden;
+
 }
 
  html {
@@ -27,14 +29,69 @@ body {
 }
 
 
+/* Базовый стиль */
 header {
-  position: fixed;
-  padding-bottom: 100px 0;
-  width: 100%;
+  align-items: anchor-center;
+  display: flex;
+  justify-content: space-between;
   z-index: 1000;
-  top: 0;
-  left: 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
+
+/* Кнопка бургер */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 25px;
+  height: 20px;
+  justify-content: space-between;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.579);
+  border-radius: 2px;
+}
+
+/* Адаптив */
+@media (max-width: 1000px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 60px; /* высота хедера */
+    right: 10px;
+    background: rgba(0,0,0,0.9);
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 
 .space {
   padding: 20px 70px;
@@ -53,11 +110,11 @@ header {
 
 nav {
   float: right;
-  width: 50%;
-  
+  top: 100px;
 }
 
 header nav ul {
+  word-spacing: 10px;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -802,7 +859,7 @@ ul li {
   perspective: 1500px;
   
   
-  display: inline-flex;
+  display: flex;
   background: #9e9e9e18;
 }
 
@@ -914,4 +971,212 @@ h3 {
     color: #ffffffcb;
     text-shadow: 0 0 10px rgba(0, 166, 255, 0.587);
     position: relative;
+}
+
+
+
+
+
+@media (min-width: 100px) and (max-width: 1000px) {
+  
+.calculateconsole {
+  width: 100%;
+  height: 150px;
+}
+
+h2 {
+  font-size: 10px;
+}
+
+pre {
+    width: 99%;
+    height: 90%;
+    
+    padding: 5px;
+    font-size: 10px;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, #00fbff6c, transparent);
+    margin-top: 0px;
+}
+
+.panel {
+    padding: 10px;
+      box-shadow: 0 0 1px rgba(0, 200, 255, 0.5);
+}
+
+.wrapper {
+  width: 100%;
+  min-height: auto;
+  height: fit-content;
+}
+
+.about-section {
+  padding: 5% 2%;
+}
+
+.about-how {
+    padding: 5% 1%;
+}
+
+.slider {
+
+    height: 2px;
+}
+
+.SmartCalcul {
+
+    font-size: 15px;
+}
+
+.space {
+    padding: 10px 5px;
+    background: #000000;
+}
+h1 {
+
+    font-size: 40px;
+}
+
+textarea {
+    height: fit-content;
+    font-size: 15px;
+}
+
+label[for="executionKnob"] {
+    font-size: 10px;
+}
+
+.total-box span
+ {
+    font-size: 30px;
+  }
+
+  .total-box {
+    font-size: 15px;
+  }
+
+.autocomplete-box {
+
+    font-size: 15px;
+}
+
+.fire {
+    height: 75px;
+}
+
+body {
+    padding-top: 50px;
+}
+
+
+.LogServiceTab {
+    min-height: 300px;
+        margin-top: 0px;
+}
+
+.about-section__title {
+
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.about-section__title::after {
+
+    width: 55px;
+    height: 1px;
+    margin-top: 0px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--edge), var(--edge2));
+    box-shadow: 0 0 18px rgba(112, 215, 255, .6);
+}
+
+.about-card__h {
+    font-size: 13px;
+}
+
+.about-card__meta {
+
+    font-size: 10px;
+}
+
+.about-how {
+
+    margin-top: 0px;
+}
+
+.about-how__title {
+
+    font-size: 20px;
+    padding: 0px 3px;
+
+}
+
+.about-how__title::after {
+
+    width: 33px;
+    height: 1px;
+    margin-top: 0px;
+    border-radius: 3px;
+}
+
+.how-card__h
+ {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+ul li {
+     margin-bottom: 0px; 
+}
+
+.how-card__meta
+ {
+
+    font-size: 10px;
+
+}
+
+.card-inner {
+
+    height: 200px;
+}
+
+.donate-info {
+    font-size: 10px;
+
+}
+
+a {
+
+    font-size: 10px;
+}
+
+.disput-title {
+
+    font-size: 25px;
+}
+
+.disput-title::after {
+    height: 2px;
+    margin: 0px auto 0;
+    border-radius: 1px;
+}
+
+.disput-buttons {
+
+    gap: 40px;
+
+}
+
+.disput-section {
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+
 }
